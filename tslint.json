@@ -8,7 +8,8 @@
   ],
   "jsRules": {},
   "rules": {
-    "object-curly-spacing": [true, "never"]
+    "object-curly-spacing": [true, "never"],
+    "no-implicit-dependencies": [true, "dev"]
   },
   "rulesDirectory": []
 }
