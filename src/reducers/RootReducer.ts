@@ -1,22 +1,20 @@
 import {IMessageAction} from "../actions/MessageActions";
 import {SHOW_MESSAGE} from "../components/Constants";
 
-interface IState {
+export interface IAppState {
   messages: string[];
 }
 
-const initialState: IState = {
+const initialState: IAppState = {
   messages: []
 };
 
 function rootReducer(state = initialState, action: IMessageAction) {
   switch (action.type) {
     case SHOW_MESSAGE:
-      state.messages.push(action.payload);
-      break;
+      return {...state, messages: state.messages.concat(action.payload)};
     default:
-      break;
+      return state;
   }
-  return state;
 }
 export default rootReducer;
