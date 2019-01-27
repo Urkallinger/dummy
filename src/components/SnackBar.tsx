@@ -9,19 +9,17 @@ import {
 } from "@material-ui/core";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 import { pollMessage } from "../actions/MessageActions";
 import { IAppState } from "../reducers/RootReducer";
 
-const styles = (theme: Theme) =>
-  createStyles({
-    close: {
-      padding: theme.spacing.unit / 2
-    }
-  });
+interface IProps extends WithStyles<typeof styles>, IStateProps, IDispatchProps {}
 
-interface IProps extends WithStyles<typeof styles> {
+interface IStateProps {
   messageQueue: string[];
+}
+
+interface IDispatchProps {
   pollMessage: () => void;
 }
 
@@ -29,17 +27,19 @@ interface IState {
   enabled: boolean;
 }
 
-const mapStateToProps = (state: IAppState) => {
-  return {
-    messageQueue: state.messageQueue
-  };
-};
+const styles = (theme: Theme) => createStyles({
+    close: {
+      padding: theme.spacing.unit / 2
+    }
+  });
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
-  return {
-    pollMessage: () => dispatch(pollMessage())
-  };
-};
+const mapStateToProps = (state: IAppState): IStateProps => ({
+  messageQueue: state.messageQueue
+});
+
+const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
+  ...bindActionCreators({ pollMessage }, dispatch)
+});
 
 class SnackBar extends Component<IProps, IState> {
   constructor(props: IProps) {
@@ -63,8 +63,8 @@ class SnackBar extends Component<IProps, IState> {
   };
 
   public render() {
-    const { classes } = this.props;
-    const open = this.props.messageQueue.length > 0 && this.state.enabled;
+    const { classes, messageQueue } = this.props;
+    const open = messageQueue.length > 0 && this.state.enabled;
 
     return (
       <MuiSnackbar
@@ -72,13 +72,10 @@ class SnackBar extends Component<IProps, IState> {
         open={open}
         autoHideDuration={6000}
         onClose={this.handleClose}
-        message={this.props.messageQueue[0]}
+        message={messageQueue[0]}
       />
     );
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withStyles(styles)(SnackBar));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SnackBar));
