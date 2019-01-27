@@ -2,4 +2,5 @@
     "prettier.tslintIntegration": true,
     "tslint.configFile": ".\\tslint.json",
     "tslint.packageManager": "yarn",
+    "editor.rulers": [100],
 }

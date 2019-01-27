@@ -3,13 +3,12 @@
   "extends": [
     "tslint:latest",
     "tslint-react",
-    "tslint-eslint-rules",
     "tslint-config-prettier"
   ],
   "jsRules": {},
   "rules": {
-    "object-curly-spacing": [true, "never"],
-    "no-implicit-dependencies": [true, "dev"]
+    "no-implicit-dependencies": [true, "dev"],
+    "max-line-length": [true, 100]
   },
   "rulesDirectory": []
 }
