@@ -26,7 +26,7 @@ interface IProps extends WithStyles<typeof styles> {
 }
 
 interface IState {
-  enabled: boolean
+  enabled: boolean;
 }
 
 const mapStateToProps = (state: IAppState) => {
@@ -53,11 +53,11 @@ class SnackBar extends Component<IProps, IState> {
     if (reason === "clickaway") {
       return;
     }
-    this.setState({enabled: false});
+    this.setState({ enabled: false });
 
     // wait 0.5 seconds before enabeling the snackbar again
     setTimeout(() => {
-      this.setState({enabled: true});
+      this.setState({ enabled: true });
       this.props.pollMessage();
     }, 500);
   };
