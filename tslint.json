@@ -1,14 +1,17 @@
 {
-  "defaultSeverity": "error",
-  "extends": [
-    "tslint:latest",
-    "tslint-react",
-    "tslint-config-prettier"
-  ],
-  "jsRules": {},
-  "rules": {
-    "no-implicit-dependencies": [true, "dev"],
-    "max-line-length": [true, 100]
-  },
-  "rulesDirectory": []
+    "defaultSeverity": "error",
+    "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+    "jsRules": {},
+    "rules": {
+        "no-console": [false],
+        "no-string-throw": true,
+        "no-unused-expression": true,
+        "no-duplicate-variable": true,
+        "curly": true,
+        "class-name": true,
+        "triple-equals": true,
+        "trailing-comma": false,
+        "no-empty": false
+    },
+    "rulesDirectory": []
 }
