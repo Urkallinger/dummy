@@ -1,7 +1,5 @@
 import {
-    Button,
     createStyles,
-    IconButton,
     Snackbar as MuiSnackbar,
     Theme,
     WithStyles,
