@@ -9,8 +9,6 @@ interface IProps {
     showMessage: (message: string) => void;
     pollMessage: () => void;
 }
-interface IState {}
-
 const mapStateToProps = (state: IAppState) => {
     return {
         messages: state.messageQueue
@@ -24,7 +22,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
-class PageOne extends Component<IProps, IState> {
+class PageOne extends Component<IProps> {
     constructor(props: IProps) {
         super(props);
         this.state = {};

@@ -62,7 +62,7 @@ class SnackBar extends Component<IProps, IState> {
     };
 
     public render() {
-        const {classes, messageQueue} = this.props;
+        const {messageQueue} = this.props;
         const open = messageQueue.length > 0 && this.state.enabled;
 
         return (
