@@ -13,6 +13,13 @@ import {bindActionCreators, Dispatch} from "redux";
 import {pollMessage} from "../actions/MessageActions";
 import {IAppState} from "../reducers/RootReducer";
 
+const styles = (theme: Theme) =>
+    createStyles({
+        close: {
+            padding: theme.spacing.unit / 2
+        }
+    });
+
 interface IState {
     enabled: boolean;
 }
@@ -34,13 +41,6 @@ const mapStateToProps = (state: IAppState): IStateProps => ({
 const mapDispatchToProps = (dispatch: Dispatch): IDispatchProps => ({
     ...bindActionCreators({pollMessage}, dispatch)
 });
-
-const styles = (theme: Theme) =>
-    createStyles({
-        close: {
-            padding: theme.spacing.unit / 2
-        }
-    });
 
 class SnackBar extends Component<IProps, IState> {
     constructor(props: IProps) {
